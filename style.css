@@ -38,6 +38,13 @@ button:hover {
     background-color: #45a049;
 }
 
+#authenticated-section {
+    height: 100vh; /* Establece la altura igual al 100% de la altura de la ventana */
+    align-items: center; /* Centra los elementos verticalmente */
+    justify-content: center; /* Centra los elementos horizontalmente */
+}
+
+
 .circular-image {
     border-radius: 50%;
     overflow: hidden;
@@ -66,8 +73,10 @@ button:hover {
     box-sizing: border-box;
     margin-bottom: 10px;
 }
-
 #tweet-container {
     max-width: 600px;
     margin: 20px auto;
+    height: auto; /* Cambiado a altura automática */
+    max-height: 300px; /* Ajusta según sea necesario, esto establecerá una altura máxima para el contenedor de tweets */
+    overflow-y: auto;
 }
