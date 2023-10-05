@@ -166,15 +166,21 @@ function addTweetToContainer(message, username) {
 }
 
 function addTweet(message, username) {
-    addTweetToContainer(message, username);
-
-    
     const existingTweets = tweets.filter(tweet => tweet.message !== message || tweet.username !== username);
+
+    // Asegurarse de que no haya duplicados antes de agregar
+    const isDuplicate = existingTweets.some(tweet => tweet.message === message && tweet.username === username);
+    if (!isDuplicate) {
+        existingTweets.unshift({ message, username });
+    }
+
     tweets.length = 0; 
-    tweets.push(...existingTweets, { message, username });
+    tweets.push(...existingTweets);
 
     saveTweetsToLocalStorage();
+    loadTweetsFromLocalStorage();  // Volver a cargar los tweets en el contenedor
 }
+
 
 function saveTweetsToLocalStorage() {
     localStorage.setItem('tweets', JSON.stringify(tweets));
@@ -232,5 +238,3 @@ updateProfileButton.addEventListener('click', function () {
    
     updateProfileDisplay(user);
 });
-
-localStorage.removeItem(tweets)
