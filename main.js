@@ -143,7 +143,7 @@ function showAuthenticatedSection(username) {
 }
 
 function loadTweetsFromLocalStorage() {
-   r
+   
     tweetContainer.innerHTML = '';
 
     tweets.forEach(tweet => {
